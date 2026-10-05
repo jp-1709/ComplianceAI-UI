@@ -12,7 +12,11 @@ export function PlaceholderPage({ path, title: titleOverride }: { path: string; 
   const item = navByPath[path];
   const search = useSearch({ strict: false }) as { filter?: string };
   const title = titleOverride ?? item?.label ?? "Page";
-  const crumbs = [{ label: "Home", to: "/command-center" }, ...(item?.group ? [{ label: item.group }] : []), { label: title }];
+  const crumbs = [
+    { label: "Home", to: "/command-center" },
+    ...(item?.group ? [{ label: item.group }] : []),
+    { label: title },
+  ];
   return (
     <div className="mx-auto max-w-6xl space-y-5">
       <Breadcrumbs items={crumbs} />
@@ -29,7 +33,11 @@ export function PlaceholderPage({ path, title: titleOverride }: { path: string; 
         icon={item?.icon ?? Construction}
         title={`${title} workspace is coming next`}
         description="This module is part of the build plan. Navigation, breadcrumbs and drill-down filters already work end to end."
-        action={<Button asChild variant="outline"><Link to="/command-center">Back to Command Center</Link></Button>}
+        action={
+          <Button asChild variant="outline">
+            <Link to="/command-center">Back to Command Center</Link>
+          </Button>
+        }
       />
     </div>
   );

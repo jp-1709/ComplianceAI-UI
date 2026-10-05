@@ -1,70 +1,64 @@
-import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
+import { create } from "zustand";
 import { people, roles } from "@/data/kfc";
 import type { Permission, RoleId } from "@/data/types";
 
 interface AppState {
   roleId: RoleId;
-  setRoleId: (r: RoleId) => void;
+  setRoleId: (roleId: RoleId) => void;
   entityId: string;
-  setEntityId: (e: string) => void;
+  setEntityId: (entityId: string) => void;
   period: string;
-  setPeriod: (p: string) => void;
+  setPeriod: (period: string) => void;
   collapsed: boolean;
-  setCollapsed: (c: boolean) => void;
+  setCollapsed: (collapsed: boolean) => void;
   dark: boolean;
-  setDark: (d: boolean) => void;
+  setDark: (dark: boolean) => void;
   paletteOpen: boolean;
-  setPaletteOpen: (o: boolean) => void;
-  can: (p: Permission) => boolean;
+  setPaletteOpen: (paletteOpen: boolean) => void;
+  can: (permission: Permission) => boolean;
 }
 
-const Ctx = createContext<AppState | null>(null);
+export const useAppState = create<AppState>((set, get) => ({
+  roleId: "compliance-officer",
+  setRoleId: (roleId) => set({ roleId }),
+  entityId: "all",
+  setEntityId: (entityId) => set({ entityId }),
+  period: "Q2 FY27",
+  setPeriod: (period) => set({ period }),
+  collapsed: false,
+  setCollapsed: (collapsed) => set({ collapsed }),
+  dark: false,
+  setDark: (dark) => set({ dark }),
+  paletteOpen: false,
+  setPaletteOpen: (paletteOpen) => set({ paletteOpen }),
+  can: (permission) => {
+    const roleId = get().roleId;
+    if (roleId === "compliance-officer" || roleId === "system-admin") return true;
+    return roles.find((role) => role.id === roleId)?.permissions.includes(permission) ?? false;
+  },
+}));
 
+/** Installs browser-only global behavior while the store remains usable outside React. */
 export function AppStateProvider({ children }: { children: ReactNode }) {
-  const [roleId, setRoleId] = useState<RoleId>("compliance-officer");
-  const [entityId, setEntityId] = useState("all");
-  const [period, setPeriod] = useState("Q2 FY27");
-  const [collapsed, setCollapsed] = useState(false);
-  const [dark, setDark] = useState(false);
-  const [paletteOpen, setPaletteOpen] = useState(false);
-
+  const dark = useAppState((state) => state.dark);
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
   }, [dark]);
-
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
-        e.preventDefault();
-        setPaletteOpen((o) => !o);
+    const onKey = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        useAppState.setState((state) => ({ paletteOpen: !state.paletteOpen }));
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
-
-  const value = useMemo<AppState>(() => {
-    const role = roles.find((r) => r.id === roleId);
-    const base: Permission[] = role?.permissions ?? [];
-    const all = roleId === "compliance-officer" || roleId === "system-admin";
-    return {
-      roleId, setRoleId, entityId, setEntityId, period, setPeriod,
-      collapsed, setCollapsed, dark, setDark, paletteOpen, setPaletteOpen,
-      can: (p) => all || base.includes(p),
-    };
-  }, [roleId, entityId, period, collapsed, dark, paletteOpen]);
-
-  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
-}
-
-export function useAppState() {
-  const v = useContext(Ctx);
-  if (!v) throw new Error("useAppState outside provider");
-  return v;
+  return <>{children}</>;
 }
 
 export function useCurrentPerson() {
-  // always defined: people list is non-empty
-  const { roleId } = useAppState();
-  return people.find((p) => p.roleId === roleId) ?? people[0]!;
+  const roleId = useAppState((state) => state.roleId);
+  return people.find((person) => person.roleId === roleId) ?? people[0]!;
 }

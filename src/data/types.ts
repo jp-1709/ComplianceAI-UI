@@ -72,13 +72,7 @@ export type Status =
 
 export type Severity = "critical" | "major" | "moderate" | "minor";
 
-export type ModuleId =
-  | "labour"
-  | "tax"
-  | "secretarial"
-  | "ehs"
-  | "qms"
-  | "fssai";
+export type ModuleId = "labour" | "tax" | "secretarial" | "ehs" | "qms" | "fssai";
 
 export interface Regulation {
   id: string;
@@ -181,7 +175,8 @@ export interface Capa {
   verifierId: string;
   severity: Severity;
   dueDate: string;
-  stage: "Investigation" | "Plan Approval" | "Implementation" | "Effectiveness Verification" | "Closed";
+  stage:
+    "Investigation" | "Plan Approval" | "Implementation" | "Effectiveness Verification" | "Closed";
   status: Status;
   independenceConflict: boolean;
   linkedFindingId?: string;

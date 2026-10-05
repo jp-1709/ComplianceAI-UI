@@ -18,11 +18,14 @@ import { Route as EhsRouteImport } from './routes/ehs'
 import { Route as EvidenceRouteImport } from './routes/evidence'
 import { Route as LabourRouteImport } from './routes/labour'
 import { Route as MyWorkRouteImport } from './routes/my-work'
+import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as SecretarialRouteImport } from './routes/secretarial'
 import { Route as TaxRouteImport } from './routes/tax'
+import { Route as EhsEvidencePackRouteImport } from './routes/ehs.evidence-pack'
 import { Route as EntitiesIndexRouteImport } from './routes/entities.index'
 import { Route as EntitiesIdRouteImport } from './routes/entities.$id'
+import { Route as LabourEvidencePackRouteImport } from './routes/labour.evidence-pack'
 import { Route as ObligationsIndexRouteImport } from './routes/obligations.index'
 import { Route as ObligationsIdRouteImport } from './routes/obligations.$id'
 import { Route as QmsAuditsRouteImport } from './routes/qms.audits'
@@ -31,6 +34,37 @@ import { Route as QmsDocumentsRouteImport } from './routes/qms.documents'
 import { Route as QmsManagementReviewsRouteImport } from './routes/qms.management-reviews'
 import { Route as QmsRisksRouteImport } from './routes/qms.risks'
 import { Route as RegulatoryAlertsRouteImport } from './routes/regulatory.alerts'
+import { Route as ReportsBoardPackRouteImport } from './routes/reports.board-pack'
+import { Route as ReportsBuilderRouteImport } from './routes/reports.builder'
+import { Route as SecretarialEvidencePackRouteImport } from './routes/secretarial.evidence-pack'
+import { Route as TaxEvidencePackRouteImport } from './routes/tax.evidence-pack'
+import { Route as EhsIncidentsIdRouteImport } from './routes/ehs.incidents.$id'
+import { Route as EhsLicencesIdRouteImport } from './routes/ehs.licences.$id'
+import { Route as EhsMonitoringIdRouteImport } from './routes/ehs.monitoring.$id'
+import { Route as LabourContractorsIdRouteImport } from './routes/labour.contractors.$id'
+import { Route as LabourEstablishmentsIdRouteImport } from './routes/labour.establishments.$id'
+import { Route as LabourInspectionsIdRouteImport } from './routes/labour.inspections.$id'
+import { Route as QmsAuditsIdRouteImport } from './routes/qms.audits.$id'
+import { Route as QmsCapaIdRouteImport } from './routes/qms.capa.$id'
+import { Route as QmsDocumentsIdRouteImport } from './routes/qms.documents.$id'
+import { Route as QmsManagementReviewsIdRouteImport } from './routes/qms.management-reviews.$id'
+import { Route as QmsRisksIdRouteImport } from './routes/qms.risks.$id'
+import { Route as SecretarialDirectorsIdRouteImport } from './routes/secretarial.directors.$id'
+import { Route as SecretarialFilingsIdRouteImport } from './routes/secretarial.filings.$id'
+import { Route as SecretarialMeetingsIdRouteImport } from './routes/secretarial.meetings.$id'
+import { Route as TaxFilingsIdRouteImport } from './routes/tax.filings.$id'
+import { Route as TaxNoticesIdRouteImport } from './routes/tax.notices.$id'
+import { Route as TaxReconciliationIdRouteImport } from './routes/tax.reconciliation.$id'
+import { Route as AiAssistantReviewTypeIdRouteImport } from './routes/ai-assistant.review.$type.$id'
+import { Route as QmsAuditsIdExecuteRouteImport } from './routes/qms.audits.$id.execute'
+import { Route as QmsAuditsIdMobileRouteImport } from './routes/qms.audits.$id.mobile'
+import { Route as QmsAuditsFindingsIdRouteImport } from './routes/qms.audits.findings.$id'
+import { Route as QmsDocumentsIdApproveRouteImport } from './routes/qms.documents.$id.approve'
+import { Route as QmsDocumentsIdCompareRouteImport } from './routes/qms.documents.$id.compare'
+import { Route as QmsManagementReviewsIdBriefingRouteImport } from './routes/qms.management-reviews.$id.briefing'
+import { Route as QmsManagementReviewsIdLiveRouteImport } from './routes/qms.management-reviews.$id.live'
+import { Route as QmsManagementReviewsIdMinutesRouteImport } from './routes/qms.management-reviews.$id.minutes'
+import { Route as QmsManagementReviewsIdPlannerRouteImport } from './routes/qms.management-reviews.$id.planner'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -77,6 +111,11 @@ const MyWorkRoute = MyWorkRouteImport.update({
   path: '/my-work',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReportsRoute = ReportsRouteImport.update({
   id: '/reports',
   path: '/reports',
@@ -92,6 +131,11 @@ const TaxRoute = TaxRouteImport.update({
   path: '/tax',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EhsEvidencePackRoute = EhsEvidencePackRouteImport.update({
+  id: '/evidence-pack',
+  path: '/evidence-pack',
+  getParentRoute: () => EhsRoute,
+} as any)
 const EntitiesIndexRoute = EntitiesIndexRouteImport.update({
   id: '/entities/',
   path: '/entities/',
@@ -101,6 +145,11 @@ const EntitiesIdRoute = EntitiesIdRouteImport.update({
   id: '/entities/$id',
   path: '/entities/$id',
   getParentRoute: () => rootRouteImport,
+} as any)
+const LabourEvidencePackRoute = LabourEvidencePackRouteImport.update({
+  id: '/evidence-pack',
+  path: '/evidence-pack',
+  getParentRoute: () => LabourRoute,
 } as any)
 const ObligationsIndexRoute = ObligationsIndexRouteImport.update({
   id: '/obligations/',
@@ -142,79 +191,340 @@ const RegulatoryAlertsRoute = RegulatoryAlertsRouteImport.update({
   path: '/regulatory/alerts',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReportsBoardPackRoute = ReportsBoardPackRouteImport.update({
+  id: '/board-pack',
+  path: '/board-pack',
+  getParentRoute: () => ReportsRoute,
+} as any)
+const ReportsBuilderRoute = ReportsBuilderRouteImport.update({
+  id: '/builder',
+  path: '/builder',
+  getParentRoute: () => ReportsRoute,
+} as any)
+const SecretarialEvidencePackRoute = SecretarialEvidencePackRouteImport.update({
+  id: '/evidence-pack',
+  path: '/evidence-pack',
+  getParentRoute: () => SecretarialRoute,
+} as any)
+const TaxEvidencePackRoute = TaxEvidencePackRouteImport.update({
+  id: '/evidence-pack',
+  path: '/evidence-pack',
+  getParentRoute: () => TaxRoute,
+} as any)
+const EhsIncidentsIdRoute = EhsIncidentsIdRouteImport.update({
+  id: '/incidents/$id',
+  path: '/incidents/$id',
+  getParentRoute: () => EhsRoute,
+} as any)
+const EhsLicencesIdRoute = EhsLicencesIdRouteImport.update({
+  id: '/licences/$id',
+  path: '/licences/$id',
+  getParentRoute: () => EhsRoute,
+} as any)
+const EhsMonitoringIdRoute = EhsMonitoringIdRouteImport.update({
+  id: '/monitoring/$id',
+  path: '/monitoring/$id',
+  getParentRoute: () => EhsRoute,
+} as any)
+const LabourContractorsIdRoute = LabourContractorsIdRouteImport.update({
+  id: '/contractors/$id',
+  path: '/contractors/$id',
+  getParentRoute: () => LabourRoute,
+} as any)
+const LabourEstablishmentsIdRoute = LabourEstablishmentsIdRouteImport.update({
+  id: '/establishments/$id',
+  path: '/establishments/$id',
+  getParentRoute: () => LabourRoute,
+} as any)
+const LabourInspectionsIdRoute = LabourInspectionsIdRouteImport.update({
+  id: '/inspections/$id',
+  path: '/inspections/$id',
+  getParentRoute: () => LabourRoute,
+} as any)
+const QmsAuditsIdRoute = QmsAuditsIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => QmsAuditsRoute,
+} as any)
+const QmsCapaIdRoute = QmsCapaIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => QmsCapaRoute,
+} as any)
+const QmsDocumentsIdRoute = QmsDocumentsIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => QmsDocumentsRoute,
+} as any)
+const QmsManagementReviewsIdRoute = QmsManagementReviewsIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => QmsManagementReviewsRoute,
+} as any)
+const QmsRisksIdRoute = QmsRisksIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => QmsRisksRoute,
+} as any)
+const SecretarialDirectorsIdRoute = SecretarialDirectorsIdRouteImport.update({
+  id: '/directors/$id',
+  path: '/directors/$id',
+  getParentRoute: () => SecretarialRoute,
+} as any)
+const SecretarialFilingsIdRoute = SecretarialFilingsIdRouteImport.update({
+  id: '/filings/$id',
+  path: '/filings/$id',
+  getParentRoute: () => SecretarialRoute,
+} as any)
+const SecretarialMeetingsIdRoute = SecretarialMeetingsIdRouteImport.update({
+  id: '/meetings/$id',
+  path: '/meetings/$id',
+  getParentRoute: () => SecretarialRoute,
+} as any)
+const TaxFilingsIdRoute = TaxFilingsIdRouteImport.update({
+  id: '/filings/$id',
+  path: '/filings/$id',
+  getParentRoute: () => TaxRoute,
+} as any)
+const TaxNoticesIdRoute = TaxNoticesIdRouteImport.update({
+  id: '/notices/$id',
+  path: '/notices/$id',
+  getParentRoute: () => TaxRoute,
+} as any)
+const TaxReconciliationIdRoute = TaxReconciliationIdRouteImport.update({
+  id: '/reconciliation/$id',
+  path: '/reconciliation/$id',
+  getParentRoute: () => TaxRoute,
+} as any)
+const AiAssistantReviewTypeIdRoute = AiAssistantReviewTypeIdRouteImport.update({
+  id: '/review/$type/$id',
+  path: '/review/$type/$id',
+  getParentRoute: () => AiAssistantRoute,
+} as any)
+const QmsAuditsIdExecuteRoute = QmsAuditsIdExecuteRouteImport.update({
+  id: '/execute',
+  path: '/execute',
+  getParentRoute: () => QmsAuditsIdRoute,
+} as any)
+const QmsAuditsIdMobileRoute = QmsAuditsIdMobileRouteImport.update({
+  id: '/mobile',
+  path: '/mobile',
+  getParentRoute: () => QmsAuditsIdRoute,
+} as any)
+const QmsAuditsFindingsIdRoute = QmsAuditsFindingsIdRouteImport.update({
+  id: '/findings/$id',
+  path: '/findings/$id',
+  getParentRoute: () => QmsAuditsRoute,
+} as any)
+const QmsDocumentsIdApproveRoute = QmsDocumentsIdApproveRouteImport.update({
+  id: '/approve',
+  path: '/approve',
+  getParentRoute: () => QmsDocumentsIdRoute,
+} as any)
+const QmsDocumentsIdCompareRoute = QmsDocumentsIdCompareRouteImport.update({
+  id: '/compare',
+  path: '/compare',
+  getParentRoute: () => QmsDocumentsIdRoute,
+} as any)
+const QmsManagementReviewsIdBriefingRoute =
+  QmsManagementReviewsIdBriefingRouteImport.update({
+    id: '/briefing',
+    path: '/briefing',
+    getParentRoute: () => QmsManagementReviewsIdRoute,
+  } as any)
+const QmsManagementReviewsIdLiveRoute =
+  QmsManagementReviewsIdLiveRouteImport.update({
+    id: '/live',
+    path: '/live',
+    getParentRoute: () => QmsManagementReviewsIdRoute,
+  } as any)
+const QmsManagementReviewsIdMinutesRoute =
+  QmsManagementReviewsIdMinutesRouteImport.update({
+    id: '/minutes',
+    path: '/minutes',
+    getParentRoute: () => QmsManagementReviewsIdRoute,
+  } as any)
+const QmsManagementReviewsIdPlannerRoute =
+  QmsManagementReviewsIdPlannerRouteImport.update({
+    id: '/planner',
+    path: '/planner',
+    getParentRoute: () => QmsManagementReviewsIdRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
-  '/ai-assistant': typeof AiAssistantRoute
+  '/ai-assistant': typeof AiAssistantRouteWithChildren
   '/calendar': typeof CalendarRoute
   '/command-center': typeof CommandCenterRoute
-  '/ehs': typeof EhsRoute
+  '/ehs': typeof EhsRouteWithChildren
   '/evidence': typeof EvidenceRoute
-  '/labour': typeof LabourRoute
+  '/labour': typeof LabourRouteWithChildren
   '/my-work': typeof MyWorkRoute
-  '/reports': typeof ReportsRoute
-  '/secretarial': typeof SecretarialRoute
-  '/tax': typeof TaxRoute
+  '/notifications': typeof NotificationsRoute
+  '/reports': typeof ReportsRouteWithChildren
+  '/secretarial': typeof SecretarialRouteWithChildren
+  '/tax': typeof TaxRouteWithChildren
+  '/ehs/evidence-pack': typeof EhsEvidencePackRoute
   '/entities/$id': typeof EntitiesIdRoute
+  '/labour/evidence-pack': typeof LabourEvidencePackRoute
   '/obligations/$id': typeof ObligationsIdRoute
-  '/qms/audits': typeof QmsAuditsRoute
-  '/qms/capa': typeof QmsCapaRoute
-  '/qms/documents': typeof QmsDocumentsRoute
-  '/qms/management-reviews': typeof QmsManagementReviewsRoute
-  '/qms/risks': typeof QmsRisksRoute
+  '/qms/audits': typeof QmsAuditsRouteWithChildren
+  '/qms/capa': typeof QmsCapaRouteWithChildren
+  '/qms/documents': typeof QmsDocumentsRouteWithChildren
+  '/qms/management-reviews': typeof QmsManagementReviewsRouteWithChildren
+  '/qms/risks': typeof QmsRisksRouteWithChildren
   '/regulatory/alerts': typeof RegulatoryAlertsRoute
+  '/reports/board-pack': typeof ReportsBoardPackRoute
+  '/reports/builder': typeof ReportsBuilderRoute
+  '/secretarial/evidence-pack': typeof SecretarialEvidencePackRoute
+  '/tax/evidence-pack': typeof TaxEvidencePackRoute
   '/entities/': typeof EntitiesIndexRoute
   '/obligations/': typeof ObligationsIndexRoute
+  '/ehs/incidents/$id': typeof EhsIncidentsIdRoute
+  '/ehs/licences/$id': typeof EhsLicencesIdRoute
+  '/ehs/monitoring/$id': typeof EhsMonitoringIdRoute
+  '/labour/contractors/$id': typeof LabourContractorsIdRoute
+  '/labour/establishments/$id': typeof LabourEstablishmentsIdRoute
+  '/labour/inspections/$id': typeof LabourInspectionsIdRoute
+  '/qms/audits/$id': typeof QmsAuditsIdRouteWithChildren
+  '/qms/capa/$id': typeof QmsCapaIdRoute
+  '/qms/documents/$id': typeof QmsDocumentsIdRouteWithChildren
+  '/qms/management-reviews/$id': typeof QmsManagementReviewsIdRouteWithChildren
+  '/qms/risks/$id': typeof QmsRisksIdRoute
+  '/secretarial/directors/$id': typeof SecretarialDirectorsIdRoute
+  '/secretarial/filings/$id': typeof SecretarialFilingsIdRoute
+  '/secretarial/meetings/$id': typeof SecretarialMeetingsIdRoute
+  '/tax/filings/$id': typeof TaxFilingsIdRoute
+  '/tax/notices/$id': typeof TaxNoticesIdRoute
+  '/tax/reconciliation/$id': typeof TaxReconciliationIdRoute
+  '/ai-assistant/review/$type/$id': typeof AiAssistantReviewTypeIdRoute
+  '/qms/audits/$id/execute': typeof QmsAuditsIdExecuteRoute
+  '/qms/audits/$id/mobile': typeof QmsAuditsIdMobileRoute
+  '/qms/audits/findings/$id': typeof QmsAuditsFindingsIdRoute
+  '/qms/documents/$id/approve': typeof QmsDocumentsIdApproveRoute
+  '/qms/documents/$id/compare': typeof QmsDocumentsIdCompareRoute
+  '/qms/management-reviews/$id/briefing': typeof QmsManagementReviewsIdBriefingRoute
+  '/qms/management-reviews/$id/live': typeof QmsManagementReviewsIdLiveRoute
+  '/qms/management-reviews/$id/minutes': typeof QmsManagementReviewsIdMinutesRoute
+  '/qms/management-reviews/$id/planner': typeof QmsManagementReviewsIdPlannerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
-  '/ai-assistant': typeof AiAssistantRoute
+  '/ai-assistant': typeof AiAssistantRouteWithChildren
   '/calendar': typeof CalendarRoute
   '/command-center': typeof CommandCenterRoute
-  '/ehs': typeof EhsRoute
+  '/ehs': typeof EhsRouteWithChildren
   '/evidence': typeof EvidenceRoute
-  '/labour': typeof LabourRoute
+  '/labour': typeof LabourRouteWithChildren
   '/my-work': typeof MyWorkRoute
-  '/reports': typeof ReportsRoute
-  '/secretarial': typeof SecretarialRoute
-  '/tax': typeof TaxRoute
+  '/notifications': typeof NotificationsRoute
+  '/reports': typeof ReportsRouteWithChildren
+  '/secretarial': typeof SecretarialRouteWithChildren
+  '/tax': typeof TaxRouteWithChildren
+  '/ehs/evidence-pack': typeof EhsEvidencePackRoute
   '/entities/$id': typeof EntitiesIdRoute
+  '/labour/evidence-pack': typeof LabourEvidencePackRoute
   '/obligations/$id': typeof ObligationsIdRoute
-  '/qms/audits': typeof QmsAuditsRoute
-  '/qms/capa': typeof QmsCapaRoute
-  '/qms/documents': typeof QmsDocumentsRoute
-  '/qms/management-reviews': typeof QmsManagementReviewsRoute
-  '/qms/risks': typeof QmsRisksRoute
+  '/qms/audits': typeof QmsAuditsRouteWithChildren
+  '/qms/capa': typeof QmsCapaRouteWithChildren
+  '/qms/documents': typeof QmsDocumentsRouteWithChildren
+  '/qms/management-reviews': typeof QmsManagementReviewsRouteWithChildren
+  '/qms/risks': typeof QmsRisksRouteWithChildren
   '/regulatory/alerts': typeof RegulatoryAlertsRoute
+  '/reports/board-pack': typeof ReportsBoardPackRoute
+  '/reports/builder': typeof ReportsBuilderRoute
+  '/secretarial/evidence-pack': typeof SecretarialEvidencePackRoute
+  '/tax/evidence-pack': typeof TaxEvidencePackRoute
   '/entities': typeof EntitiesIndexRoute
   '/obligations': typeof ObligationsIndexRoute
+  '/ehs/incidents/$id': typeof EhsIncidentsIdRoute
+  '/ehs/licences/$id': typeof EhsLicencesIdRoute
+  '/ehs/monitoring/$id': typeof EhsMonitoringIdRoute
+  '/labour/contractors/$id': typeof LabourContractorsIdRoute
+  '/labour/establishments/$id': typeof LabourEstablishmentsIdRoute
+  '/labour/inspections/$id': typeof LabourInspectionsIdRoute
+  '/qms/audits/$id': typeof QmsAuditsIdRouteWithChildren
+  '/qms/capa/$id': typeof QmsCapaIdRoute
+  '/qms/documents/$id': typeof QmsDocumentsIdRouteWithChildren
+  '/qms/management-reviews/$id': typeof QmsManagementReviewsIdRouteWithChildren
+  '/qms/risks/$id': typeof QmsRisksIdRoute
+  '/secretarial/directors/$id': typeof SecretarialDirectorsIdRoute
+  '/secretarial/filings/$id': typeof SecretarialFilingsIdRoute
+  '/secretarial/meetings/$id': typeof SecretarialMeetingsIdRoute
+  '/tax/filings/$id': typeof TaxFilingsIdRoute
+  '/tax/notices/$id': typeof TaxNoticesIdRoute
+  '/tax/reconciliation/$id': typeof TaxReconciliationIdRoute
+  '/ai-assistant/review/$type/$id': typeof AiAssistantReviewTypeIdRoute
+  '/qms/audits/$id/execute': typeof QmsAuditsIdExecuteRoute
+  '/qms/audits/$id/mobile': typeof QmsAuditsIdMobileRoute
+  '/qms/audits/findings/$id': typeof QmsAuditsFindingsIdRoute
+  '/qms/documents/$id/approve': typeof QmsDocumentsIdApproveRoute
+  '/qms/documents/$id/compare': typeof QmsDocumentsIdCompareRoute
+  '/qms/management-reviews/$id/briefing': typeof QmsManagementReviewsIdBriefingRoute
+  '/qms/management-reviews/$id/live': typeof QmsManagementReviewsIdLiveRoute
+  '/qms/management-reviews/$id/minutes': typeof QmsManagementReviewsIdMinutesRoute
+  '/qms/management-reviews/$id/planner': typeof QmsManagementReviewsIdPlannerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
-  '/ai-assistant': typeof AiAssistantRoute
+  '/ai-assistant': typeof AiAssistantRouteWithChildren
   '/calendar': typeof CalendarRoute
   '/command-center': typeof CommandCenterRoute
-  '/ehs': typeof EhsRoute
+  '/ehs': typeof EhsRouteWithChildren
   '/evidence': typeof EvidenceRoute
-  '/labour': typeof LabourRoute
+  '/labour': typeof LabourRouteWithChildren
   '/my-work': typeof MyWorkRoute
-  '/reports': typeof ReportsRoute
-  '/secretarial': typeof SecretarialRoute
-  '/tax': typeof TaxRoute
+  '/notifications': typeof NotificationsRoute
+  '/reports': typeof ReportsRouteWithChildren
+  '/secretarial': typeof SecretarialRouteWithChildren
+  '/tax': typeof TaxRouteWithChildren
+  '/ehs/evidence-pack': typeof EhsEvidencePackRoute
   '/entities/$id': typeof EntitiesIdRoute
+  '/labour/evidence-pack': typeof LabourEvidencePackRoute
   '/obligations/$id': typeof ObligationsIdRoute
-  '/qms/audits': typeof QmsAuditsRoute
-  '/qms/capa': typeof QmsCapaRoute
-  '/qms/documents': typeof QmsDocumentsRoute
-  '/qms/management-reviews': typeof QmsManagementReviewsRoute
-  '/qms/risks': typeof QmsRisksRoute
+  '/qms/audits': typeof QmsAuditsRouteWithChildren
+  '/qms/capa': typeof QmsCapaRouteWithChildren
+  '/qms/documents': typeof QmsDocumentsRouteWithChildren
+  '/qms/management-reviews': typeof QmsManagementReviewsRouteWithChildren
+  '/qms/risks': typeof QmsRisksRouteWithChildren
   '/regulatory/alerts': typeof RegulatoryAlertsRoute
+  '/reports/board-pack': typeof ReportsBoardPackRoute
+  '/reports/builder': typeof ReportsBuilderRoute
+  '/secretarial/evidence-pack': typeof SecretarialEvidencePackRoute
+  '/tax/evidence-pack': typeof TaxEvidencePackRoute
   '/entities/': typeof EntitiesIndexRoute
   '/obligations/': typeof ObligationsIndexRoute
+  '/ehs/incidents/$id': typeof EhsIncidentsIdRoute
+  '/ehs/licences/$id': typeof EhsLicencesIdRoute
+  '/ehs/monitoring/$id': typeof EhsMonitoringIdRoute
+  '/labour/contractors/$id': typeof LabourContractorsIdRoute
+  '/labour/establishments/$id': typeof LabourEstablishmentsIdRoute
+  '/labour/inspections/$id': typeof LabourInspectionsIdRoute
+  '/qms/audits/$id': typeof QmsAuditsIdRouteWithChildren
+  '/qms/capa/$id': typeof QmsCapaIdRoute
+  '/qms/documents/$id': typeof QmsDocumentsIdRouteWithChildren
+  '/qms/management-reviews/$id': typeof QmsManagementReviewsIdRouteWithChildren
+  '/qms/risks/$id': typeof QmsRisksIdRoute
+  '/secretarial/directors/$id': typeof SecretarialDirectorsIdRoute
+  '/secretarial/filings/$id': typeof SecretarialFilingsIdRoute
+  '/secretarial/meetings/$id': typeof SecretarialMeetingsIdRoute
+  '/tax/filings/$id': typeof TaxFilingsIdRoute
+  '/tax/notices/$id': typeof TaxNoticesIdRoute
+  '/tax/reconciliation/$id': typeof TaxReconciliationIdRoute
+  '/ai-assistant/review/$type/$id': typeof AiAssistantReviewTypeIdRoute
+  '/qms/audits/$id/execute': typeof QmsAuditsIdExecuteRoute
+  '/qms/audits/$id/mobile': typeof QmsAuditsIdMobileRoute
+  '/qms/audits/findings/$id': typeof QmsAuditsFindingsIdRoute
+  '/qms/documents/$id/approve': typeof QmsDocumentsIdApproveRoute
+  '/qms/documents/$id/compare': typeof QmsDocumentsIdCompareRoute
+  '/qms/management-reviews/$id/briefing': typeof QmsManagementReviewsIdBriefingRoute
+  '/qms/management-reviews/$id/live': typeof QmsManagementReviewsIdLiveRoute
+  '/qms/management-reviews/$id/minutes': typeof QmsManagementReviewsIdMinutesRoute
+  '/qms/management-reviews/$id/planner': typeof QmsManagementReviewsIdPlannerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -228,10 +538,13 @@ export interface FileRouteTypes {
     | '/evidence'
     | '/labour'
     | '/my-work'
+    | '/notifications'
     | '/reports'
     | '/secretarial'
     | '/tax'
+    | '/ehs/evidence-pack'
     | '/entities/$id'
+    | '/labour/evidence-pack'
     | '/obligations/$id'
     | '/qms/audits'
     | '/qms/capa'
@@ -239,8 +552,39 @@ export interface FileRouteTypes {
     | '/qms/management-reviews'
     | '/qms/risks'
     | '/regulatory/alerts'
+    | '/reports/board-pack'
+    | '/reports/builder'
+    | '/secretarial/evidence-pack'
+    | '/tax/evidence-pack'
     | '/entities/'
     | '/obligations/'
+    | '/ehs/incidents/$id'
+    | '/ehs/licences/$id'
+    | '/ehs/monitoring/$id'
+    | '/labour/contractors/$id'
+    | '/labour/establishments/$id'
+    | '/labour/inspections/$id'
+    | '/qms/audits/$id'
+    | '/qms/capa/$id'
+    | '/qms/documents/$id'
+    | '/qms/management-reviews/$id'
+    | '/qms/risks/$id'
+    | '/secretarial/directors/$id'
+    | '/secretarial/filings/$id'
+    | '/secretarial/meetings/$id'
+    | '/tax/filings/$id'
+    | '/tax/notices/$id'
+    | '/tax/reconciliation/$id'
+    | '/ai-assistant/review/$type/$id'
+    | '/qms/audits/$id/execute'
+    | '/qms/audits/$id/mobile'
+    | '/qms/audits/findings/$id'
+    | '/qms/documents/$id/approve'
+    | '/qms/documents/$id/compare'
+    | '/qms/management-reviews/$id/briefing'
+    | '/qms/management-reviews/$id/live'
+    | '/qms/management-reviews/$id/minutes'
+    | '/qms/management-reviews/$id/planner'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -252,10 +596,13 @@ export interface FileRouteTypes {
     | '/evidence'
     | '/labour'
     | '/my-work'
+    | '/notifications'
     | '/reports'
     | '/secretarial'
     | '/tax'
+    | '/ehs/evidence-pack'
     | '/entities/$id'
+    | '/labour/evidence-pack'
     | '/obligations/$id'
     | '/qms/audits'
     | '/qms/capa'
@@ -263,8 +610,39 @@ export interface FileRouteTypes {
     | '/qms/management-reviews'
     | '/qms/risks'
     | '/regulatory/alerts'
+    | '/reports/board-pack'
+    | '/reports/builder'
+    | '/secretarial/evidence-pack'
+    | '/tax/evidence-pack'
     | '/entities'
     | '/obligations'
+    | '/ehs/incidents/$id'
+    | '/ehs/licences/$id'
+    | '/ehs/monitoring/$id'
+    | '/labour/contractors/$id'
+    | '/labour/establishments/$id'
+    | '/labour/inspections/$id'
+    | '/qms/audits/$id'
+    | '/qms/capa/$id'
+    | '/qms/documents/$id'
+    | '/qms/management-reviews/$id'
+    | '/qms/risks/$id'
+    | '/secretarial/directors/$id'
+    | '/secretarial/filings/$id'
+    | '/secretarial/meetings/$id'
+    | '/tax/filings/$id'
+    | '/tax/notices/$id'
+    | '/tax/reconciliation/$id'
+    | '/ai-assistant/review/$type/$id'
+    | '/qms/audits/$id/execute'
+    | '/qms/audits/$id/mobile'
+    | '/qms/audits/findings/$id'
+    | '/qms/documents/$id/approve'
+    | '/qms/documents/$id/compare'
+    | '/qms/management-reviews/$id/briefing'
+    | '/qms/management-reviews/$id/live'
+    | '/qms/management-reviews/$id/minutes'
+    | '/qms/management-reviews/$id/planner'
   id:
     | '__root__'
     | '/'
@@ -276,10 +654,13 @@ export interface FileRouteTypes {
     | '/evidence'
     | '/labour'
     | '/my-work'
+    | '/notifications'
     | '/reports'
     | '/secretarial'
     | '/tax'
+    | '/ehs/evidence-pack'
     | '/entities/$id'
+    | '/labour/evidence-pack'
     | '/obligations/$id'
     | '/qms/audits'
     | '/qms/capa'
@@ -287,30 +668,62 @@ export interface FileRouteTypes {
     | '/qms/management-reviews'
     | '/qms/risks'
     | '/regulatory/alerts'
+    | '/reports/board-pack'
+    | '/reports/builder'
+    | '/secretarial/evidence-pack'
+    | '/tax/evidence-pack'
     | '/entities/'
     | '/obligations/'
+    | '/ehs/incidents/$id'
+    | '/ehs/licences/$id'
+    | '/ehs/monitoring/$id'
+    | '/labour/contractors/$id'
+    | '/labour/establishments/$id'
+    | '/labour/inspections/$id'
+    | '/qms/audits/$id'
+    | '/qms/capa/$id'
+    | '/qms/documents/$id'
+    | '/qms/management-reviews/$id'
+    | '/qms/risks/$id'
+    | '/secretarial/directors/$id'
+    | '/secretarial/filings/$id'
+    | '/secretarial/meetings/$id'
+    | '/tax/filings/$id'
+    | '/tax/notices/$id'
+    | '/tax/reconciliation/$id'
+    | '/ai-assistant/review/$type/$id'
+    | '/qms/audits/$id/execute'
+    | '/qms/audits/$id/mobile'
+    | '/qms/audits/findings/$id'
+    | '/qms/documents/$id/approve'
+    | '/qms/documents/$id/compare'
+    | '/qms/management-reviews/$id/briefing'
+    | '/qms/management-reviews/$id/live'
+    | '/qms/management-reviews/$id/minutes'
+    | '/qms/management-reviews/$id/planner'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
-  AiAssistantRoute: typeof AiAssistantRoute
+  AiAssistantRoute: typeof AiAssistantRouteWithChildren
   CalendarRoute: typeof CalendarRoute
   CommandCenterRoute: typeof CommandCenterRoute
-  EhsRoute: typeof EhsRoute
+  EhsRoute: typeof EhsRouteWithChildren
   EvidenceRoute: typeof EvidenceRoute
-  LabourRoute: typeof LabourRoute
+  LabourRoute: typeof LabourRouteWithChildren
   MyWorkRoute: typeof MyWorkRoute
-  ReportsRoute: typeof ReportsRoute
-  SecretarialRoute: typeof SecretarialRoute
-  TaxRoute: typeof TaxRoute
+  NotificationsRoute: typeof NotificationsRoute
+  ReportsRoute: typeof ReportsRouteWithChildren
+  SecretarialRoute: typeof SecretarialRouteWithChildren
+  TaxRoute: typeof TaxRouteWithChildren
   EntitiesIdRoute: typeof EntitiesIdRoute
   ObligationsIdRoute: typeof ObligationsIdRoute
-  QmsAuditsRoute: typeof QmsAuditsRoute
-  QmsCapaRoute: typeof QmsCapaRoute
-  QmsDocumentsRoute: typeof QmsDocumentsRoute
-  QmsManagementReviewsRoute: typeof QmsManagementReviewsRoute
-  QmsRisksRoute: typeof QmsRisksRoute
+  QmsAuditsRoute: typeof QmsAuditsRouteWithChildren
+  QmsCapaRoute: typeof QmsCapaRouteWithChildren
+  QmsDocumentsRoute: typeof QmsDocumentsRouteWithChildren
+  QmsManagementReviewsRoute: typeof QmsManagementReviewsRouteWithChildren
+  QmsRisksRoute: typeof QmsRisksRouteWithChildren
   RegulatoryAlertsRoute: typeof RegulatoryAlertsRoute
   EntitiesIndexRoute: typeof EntitiesIndexRoute
   ObligationsIndexRoute: typeof ObligationsIndexRoute
@@ -381,6 +794,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MyWorkRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reports': {
       id: '/reports'
       path: '/reports'
@@ -402,6 +822,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TaxRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ehs/evidence-pack': {
+      id: '/ehs/evidence-pack'
+      path: '/evidence-pack'
+      fullPath: '/ehs/evidence-pack'
+      preLoaderRoute: typeof EhsEvidencePackRouteImport
+      parentRoute: typeof EhsRoute
+    }
     '/entities/': {
       id: '/entities/'
       path: '/entities'
@@ -415,6 +842,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/entities/$id'
       preLoaderRoute: typeof EntitiesIdRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/labour/evidence-pack': {
+      id: '/labour/evidence-pack'
+      path: '/evidence-pack'
+      fullPath: '/labour/evidence-pack'
+      preLoaderRoute: typeof LabourEvidencePackRouteImport
+      parentRoute: typeof LabourRoute
     }
     '/obligations/': {
       id: '/obligations/'
@@ -472,29 +906,447 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RegulatoryAlertsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reports/board-pack': {
+      id: '/reports/board-pack'
+      path: '/board-pack'
+      fullPath: '/reports/board-pack'
+      preLoaderRoute: typeof ReportsBoardPackRouteImport
+      parentRoute: typeof ReportsRoute
+    }
+    '/reports/builder': {
+      id: '/reports/builder'
+      path: '/builder'
+      fullPath: '/reports/builder'
+      preLoaderRoute: typeof ReportsBuilderRouteImport
+      parentRoute: typeof ReportsRoute
+    }
+    '/secretarial/evidence-pack': {
+      id: '/secretarial/evidence-pack'
+      path: '/evidence-pack'
+      fullPath: '/secretarial/evidence-pack'
+      preLoaderRoute: typeof SecretarialEvidencePackRouteImport
+      parentRoute: typeof SecretarialRoute
+    }
+    '/tax/evidence-pack': {
+      id: '/tax/evidence-pack'
+      path: '/evidence-pack'
+      fullPath: '/tax/evidence-pack'
+      preLoaderRoute: typeof TaxEvidencePackRouteImport
+      parentRoute: typeof TaxRoute
+    }
+    '/ehs/incidents/$id': {
+      id: '/ehs/incidents/$id'
+      path: '/incidents/$id'
+      fullPath: '/ehs/incidents/$id'
+      preLoaderRoute: typeof EhsIncidentsIdRouteImport
+      parentRoute: typeof EhsRoute
+    }
+    '/ehs/licences/$id': {
+      id: '/ehs/licences/$id'
+      path: '/licences/$id'
+      fullPath: '/ehs/licences/$id'
+      preLoaderRoute: typeof EhsLicencesIdRouteImport
+      parentRoute: typeof EhsRoute
+    }
+    '/ehs/monitoring/$id': {
+      id: '/ehs/monitoring/$id'
+      path: '/monitoring/$id'
+      fullPath: '/ehs/monitoring/$id'
+      preLoaderRoute: typeof EhsMonitoringIdRouteImport
+      parentRoute: typeof EhsRoute
+    }
+    '/labour/contractors/$id': {
+      id: '/labour/contractors/$id'
+      path: '/contractors/$id'
+      fullPath: '/labour/contractors/$id'
+      preLoaderRoute: typeof LabourContractorsIdRouteImport
+      parentRoute: typeof LabourRoute
+    }
+    '/labour/establishments/$id': {
+      id: '/labour/establishments/$id'
+      path: '/establishments/$id'
+      fullPath: '/labour/establishments/$id'
+      preLoaderRoute: typeof LabourEstablishmentsIdRouteImport
+      parentRoute: typeof LabourRoute
+    }
+    '/labour/inspections/$id': {
+      id: '/labour/inspections/$id'
+      path: '/inspections/$id'
+      fullPath: '/labour/inspections/$id'
+      preLoaderRoute: typeof LabourInspectionsIdRouteImport
+      parentRoute: typeof LabourRoute
+    }
+    '/qms/audits/$id': {
+      id: '/qms/audits/$id'
+      path: '/$id'
+      fullPath: '/qms/audits/$id'
+      preLoaderRoute: typeof QmsAuditsIdRouteImport
+      parentRoute: typeof QmsAuditsRoute
+    }
+    '/qms/capa/$id': {
+      id: '/qms/capa/$id'
+      path: '/$id'
+      fullPath: '/qms/capa/$id'
+      preLoaderRoute: typeof QmsCapaIdRouteImport
+      parentRoute: typeof QmsCapaRoute
+    }
+    '/qms/documents/$id': {
+      id: '/qms/documents/$id'
+      path: '/$id'
+      fullPath: '/qms/documents/$id'
+      preLoaderRoute: typeof QmsDocumentsIdRouteImport
+      parentRoute: typeof QmsDocumentsRoute
+    }
+    '/qms/management-reviews/$id': {
+      id: '/qms/management-reviews/$id'
+      path: '/$id'
+      fullPath: '/qms/management-reviews/$id'
+      preLoaderRoute: typeof QmsManagementReviewsIdRouteImport
+      parentRoute: typeof QmsManagementReviewsRoute
+    }
+    '/qms/risks/$id': {
+      id: '/qms/risks/$id'
+      path: '/$id'
+      fullPath: '/qms/risks/$id'
+      preLoaderRoute: typeof QmsRisksIdRouteImport
+      parentRoute: typeof QmsRisksRoute
+    }
+    '/secretarial/directors/$id': {
+      id: '/secretarial/directors/$id'
+      path: '/directors/$id'
+      fullPath: '/secretarial/directors/$id'
+      preLoaderRoute: typeof SecretarialDirectorsIdRouteImport
+      parentRoute: typeof SecretarialRoute
+    }
+    '/secretarial/filings/$id': {
+      id: '/secretarial/filings/$id'
+      path: '/filings/$id'
+      fullPath: '/secretarial/filings/$id'
+      preLoaderRoute: typeof SecretarialFilingsIdRouteImport
+      parentRoute: typeof SecretarialRoute
+    }
+    '/secretarial/meetings/$id': {
+      id: '/secretarial/meetings/$id'
+      path: '/meetings/$id'
+      fullPath: '/secretarial/meetings/$id'
+      preLoaderRoute: typeof SecretarialMeetingsIdRouteImport
+      parentRoute: typeof SecretarialRoute
+    }
+    '/tax/filings/$id': {
+      id: '/tax/filings/$id'
+      path: '/filings/$id'
+      fullPath: '/tax/filings/$id'
+      preLoaderRoute: typeof TaxFilingsIdRouteImport
+      parentRoute: typeof TaxRoute
+    }
+    '/tax/notices/$id': {
+      id: '/tax/notices/$id'
+      path: '/notices/$id'
+      fullPath: '/tax/notices/$id'
+      preLoaderRoute: typeof TaxNoticesIdRouteImport
+      parentRoute: typeof TaxRoute
+    }
+    '/tax/reconciliation/$id': {
+      id: '/tax/reconciliation/$id'
+      path: '/reconciliation/$id'
+      fullPath: '/tax/reconciliation/$id'
+      preLoaderRoute: typeof TaxReconciliationIdRouteImport
+      parentRoute: typeof TaxRoute
+    }
+    '/ai-assistant/review/$type/$id': {
+      id: '/ai-assistant/review/$type/$id'
+      path: '/review/$type/$id'
+      fullPath: '/ai-assistant/review/$type/$id'
+      preLoaderRoute: typeof AiAssistantReviewTypeIdRouteImport
+      parentRoute: typeof AiAssistantRoute
+    }
+    '/qms/audits/$id/execute': {
+      id: '/qms/audits/$id/execute'
+      path: '/execute'
+      fullPath: '/qms/audits/$id/execute'
+      preLoaderRoute: typeof QmsAuditsIdExecuteRouteImport
+      parentRoute: typeof QmsAuditsIdRoute
+    }
+    '/qms/audits/$id/mobile': {
+      id: '/qms/audits/$id/mobile'
+      path: '/mobile'
+      fullPath: '/qms/audits/$id/mobile'
+      preLoaderRoute: typeof QmsAuditsIdMobileRouteImport
+      parentRoute: typeof QmsAuditsIdRoute
+    }
+    '/qms/audits/findings/$id': {
+      id: '/qms/audits/findings/$id'
+      path: '/findings/$id'
+      fullPath: '/qms/audits/findings/$id'
+      preLoaderRoute: typeof QmsAuditsFindingsIdRouteImport
+      parentRoute: typeof QmsAuditsRoute
+    }
+    '/qms/documents/$id/approve': {
+      id: '/qms/documents/$id/approve'
+      path: '/approve'
+      fullPath: '/qms/documents/$id/approve'
+      preLoaderRoute: typeof QmsDocumentsIdApproveRouteImport
+      parentRoute: typeof QmsDocumentsIdRoute
+    }
+    '/qms/documents/$id/compare': {
+      id: '/qms/documents/$id/compare'
+      path: '/compare'
+      fullPath: '/qms/documents/$id/compare'
+      preLoaderRoute: typeof QmsDocumentsIdCompareRouteImport
+      parentRoute: typeof QmsDocumentsIdRoute
+    }
+    '/qms/management-reviews/$id/briefing': {
+      id: '/qms/management-reviews/$id/briefing'
+      path: '/briefing'
+      fullPath: '/qms/management-reviews/$id/briefing'
+      preLoaderRoute: typeof QmsManagementReviewsIdBriefingRouteImport
+      parentRoute: typeof QmsManagementReviewsIdRoute
+    }
+    '/qms/management-reviews/$id/live': {
+      id: '/qms/management-reviews/$id/live'
+      path: '/live'
+      fullPath: '/qms/management-reviews/$id/live'
+      preLoaderRoute: typeof QmsManagementReviewsIdLiveRouteImport
+      parentRoute: typeof QmsManagementReviewsIdRoute
+    }
+    '/qms/management-reviews/$id/minutes': {
+      id: '/qms/management-reviews/$id/minutes'
+      path: '/minutes'
+      fullPath: '/qms/management-reviews/$id/minutes'
+      preLoaderRoute: typeof QmsManagementReviewsIdMinutesRouteImport
+      parentRoute: typeof QmsManagementReviewsIdRoute
+    }
+    '/qms/management-reviews/$id/planner': {
+      id: '/qms/management-reviews/$id/planner'
+      path: '/planner'
+      fullPath: '/qms/management-reviews/$id/planner'
+      preLoaderRoute: typeof QmsManagementReviewsIdPlannerRouteImport
+      parentRoute: typeof QmsManagementReviewsIdRoute
+    }
   }
 }
+
+interface AiAssistantRouteChildren {
+  AiAssistantReviewTypeIdRoute: typeof AiAssistantReviewTypeIdRoute
+}
+
+const AiAssistantRouteChildren: AiAssistantRouteChildren = {
+  AiAssistantReviewTypeIdRoute: AiAssistantReviewTypeIdRoute,
+}
+
+const AiAssistantRouteWithChildren = AiAssistantRoute._addFileChildren(
+  AiAssistantRouteChildren,
+)
+
+interface EhsRouteChildren {
+  EhsEvidencePackRoute: typeof EhsEvidencePackRoute
+  EhsIncidentsIdRoute: typeof EhsIncidentsIdRoute
+  EhsLicencesIdRoute: typeof EhsLicencesIdRoute
+  EhsMonitoringIdRoute: typeof EhsMonitoringIdRoute
+}
+
+const EhsRouteChildren: EhsRouteChildren = {
+  EhsEvidencePackRoute: EhsEvidencePackRoute,
+  EhsIncidentsIdRoute: EhsIncidentsIdRoute,
+  EhsLicencesIdRoute: EhsLicencesIdRoute,
+  EhsMonitoringIdRoute: EhsMonitoringIdRoute,
+}
+
+const EhsRouteWithChildren = EhsRoute._addFileChildren(EhsRouteChildren)
+
+interface LabourRouteChildren {
+  LabourEvidencePackRoute: typeof LabourEvidencePackRoute
+  LabourContractorsIdRoute: typeof LabourContractorsIdRoute
+  LabourEstablishmentsIdRoute: typeof LabourEstablishmentsIdRoute
+  LabourInspectionsIdRoute: typeof LabourInspectionsIdRoute
+}
+
+const LabourRouteChildren: LabourRouteChildren = {
+  LabourEvidencePackRoute: LabourEvidencePackRoute,
+  LabourContractorsIdRoute: LabourContractorsIdRoute,
+  LabourEstablishmentsIdRoute: LabourEstablishmentsIdRoute,
+  LabourInspectionsIdRoute: LabourInspectionsIdRoute,
+}
+
+const LabourRouteWithChildren =
+  LabourRoute._addFileChildren(LabourRouteChildren)
+
+interface ReportsRouteChildren {
+  ReportsBoardPackRoute: typeof ReportsBoardPackRoute
+  ReportsBuilderRoute: typeof ReportsBuilderRoute
+}
+
+const ReportsRouteChildren: ReportsRouteChildren = {
+  ReportsBoardPackRoute: ReportsBoardPackRoute,
+  ReportsBuilderRoute: ReportsBuilderRoute,
+}
+
+const ReportsRouteWithChildren =
+  ReportsRoute._addFileChildren(ReportsRouteChildren)
+
+interface SecretarialRouteChildren {
+  SecretarialEvidencePackRoute: typeof SecretarialEvidencePackRoute
+  SecretarialDirectorsIdRoute: typeof SecretarialDirectorsIdRoute
+  SecretarialFilingsIdRoute: typeof SecretarialFilingsIdRoute
+  SecretarialMeetingsIdRoute: typeof SecretarialMeetingsIdRoute
+}
+
+const SecretarialRouteChildren: SecretarialRouteChildren = {
+  SecretarialEvidencePackRoute: SecretarialEvidencePackRoute,
+  SecretarialDirectorsIdRoute: SecretarialDirectorsIdRoute,
+  SecretarialFilingsIdRoute: SecretarialFilingsIdRoute,
+  SecretarialMeetingsIdRoute: SecretarialMeetingsIdRoute,
+}
+
+const SecretarialRouteWithChildren = SecretarialRoute._addFileChildren(
+  SecretarialRouteChildren,
+)
+
+interface TaxRouteChildren {
+  TaxEvidencePackRoute: typeof TaxEvidencePackRoute
+  TaxFilingsIdRoute: typeof TaxFilingsIdRoute
+  TaxNoticesIdRoute: typeof TaxNoticesIdRoute
+  TaxReconciliationIdRoute: typeof TaxReconciliationIdRoute
+}
+
+const TaxRouteChildren: TaxRouteChildren = {
+  TaxEvidencePackRoute: TaxEvidencePackRoute,
+  TaxFilingsIdRoute: TaxFilingsIdRoute,
+  TaxNoticesIdRoute: TaxNoticesIdRoute,
+  TaxReconciliationIdRoute: TaxReconciliationIdRoute,
+}
+
+const TaxRouteWithChildren = TaxRoute._addFileChildren(TaxRouteChildren)
+
+interface QmsAuditsIdRouteChildren {
+  QmsAuditsIdExecuteRoute: typeof QmsAuditsIdExecuteRoute
+  QmsAuditsIdMobileRoute: typeof QmsAuditsIdMobileRoute
+}
+
+const QmsAuditsIdRouteChildren: QmsAuditsIdRouteChildren = {
+  QmsAuditsIdExecuteRoute: QmsAuditsIdExecuteRoute,
+  QmsAuditsIdMobileRoute: QmsAuditsIdMobileRoute,
+}
+
+const QmsAuditsIdRouteWithChildren = QmsAuditsIdRoute._addFileChildren(
+  QmsAuditsIdRouteChildren,
+)
+
+interface QmsAuditsRouteChildren {
+  QmsAuditsIdRoute: typeof QmsAuditsIdRouteWithChildren
+  QmsAuditsFindingsIdRoute: typeof QmsAuditsFindingsIdRoute
+}
+
+const QmsAuditsRouteChildren: QmsAuditsRouteChildren = {
+  QmsAuditsIdRoute: QmsAuditsIdRouteWithChildren,
+  QmsAuditsFindingsIdRoute: QmsAuditsFindingsIdRoute,
+}
+
+const QmsAuditsRouteWithChildren = QmsAuditsRoute._addFileChildren(
+  QmsAuditsRouteChildren,
+)
+
+interface QmsCapaRouteChildren {
+  QmsCapaIdRoute: typeof QmsCapaIdRoute
+}
+
+const QmsCapaRouteChildren: QmsCapaRouteChildren = {
+  QmsCapaIdRoute: QmsCapaIdRoute,
+}
+
+const QmsCapaRouteWithChildren =
+  QmsCapaRoute._addFileChildren(QmsCapaRouteChildren)
+
+interface QmsDocumentsIdRouteChildren {
+  QmsDocumentsIdApproveRoute: typeof QmsDocumentsIdApproveRoute
+  QmsDocumentsIdCompareRoute: typeof QmsDocumentsIdCompareRoute
+}
+
+const QmsDocumentsIdRouteChildren: QmsDocumentsIdRouteChildren = {
+  QmsDocumentsIdApproveRoute: QmsDocumentsIdApproveRoute,
+  QmsDocumentsIdCompareRoute: QmsDocumentsIdCompareRoute,
+}
+
+const QmsDocumentsIdRouteWithChildren = QmsDocumentsIdRoute._addFileChildren(
+  QmsDocumentsIdRouteChildren,
+)
+
+interface QmsDocumentsRouteChildren {
+  QmsDocumentsIdRoute: typeof QmsDocumentsIdRouteWithChildren
+}
+
+const QmsDocumentsRouteChildren: QmsDocumentsRouteChildren = {
+  QmsDocumentsIdRoute: QmsDocumentsIdRouteWithChildren,
+}
+
+const QmsDocumentsRouteWithChildren = QmsDocumentsRoute._addFileChildren(
+  QmsDocumentsRouteChildren,
+)
+
+interface QmsManagementReviewsIdRouteChildren {
+  QmsManagementReviewsIdBriefingRoute: typeof QmsManagementReviewsIdBriefingRoute
+  QmsManagementReviewsIdLiveRoute: typeof QmsManagementReviewsIdLiveRoute
+  QmsManagementReviewsIdMinutesRoute: typeof QmsManagementReviewsIdMinutesRoute
+  QmsManagementReviewsIdPlannerRoute: typeof QmsManagementReviewsIdPlannerRoute
+}
+
+const QmsManagementReviewsIdRouteChildren: QmsManagementReviewsIdRouteChildren =
+  {
+    QmsManagementReviewsIdBriefingRoute: QmsManagementReviewsIdBriefingRoute,
+    QmsManagementReviewsIdLiveRoute: QmsManagementReviewsIdLiveRoute,
+    QmsManagementReviewsIdMinutesRoute: QmsManagementReviewsIdMinutesRoute,
+    QmsManagementReviewsIdPlannerRoute: QmsManagementReviewsIdPlannerRoute,
+  }
+
+const QmsManagementReviewsIdRouteWithChildren =
+  QmsManagementReviewsIdRoute._addFileChildren(
+    QmsManagementReviewsIdRouteChildren,
+  )
+
+interface QmsManagementReviewsRouteChildren {
+  QmsManagementReviewsIdRoute: typeof QmsManagementReviewsIdRouteWithChildren
+}
+
+const QmsManagementReviewsRouteChildren: QmsManagementReviewsRouteChildren = {
+  QmsManagementReviewsIdRoute: QmsManagementReviewsIdRouteWithChildren,
+}
+
+const QmsManagementReviewsRouteWithChildren =
+  QmsManagementReviewsRoute._addFileChildren(QmsManagementReviewsRouteChildren)
+
+interface QmsRisksRouteChildren {
+  QmsRisksIdRoute: typeof QmsRisksIdRoute
+}
+
+const QmsRisksRouteChildren: QmsRisksRouteChildren = {
+  QmsRisksIdRoute: QmsRisksIdRoute,
+}
+
+const QmsRisksRouteWithChildren = QmsRisksRoute._addFileChildren(
+  QmsRisksRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
-  AiAssistantRoute: AiAssistantRoute,
+  AiAssistantRoute: AiAssistantRouteWithChildren,
   CalendarRoute: CalendarRoute,
   CommandCenterRoute: CommandCenterRoute,
-  EhsRoute: EhsRoute,
+  EhsRoute: EhsRouteWithChildren,
   EvidenceRoute: EvidenceRoute,
-  LabourRoute: LabourRoute,
+  LabourRoute: LabourRouteWithChildren,
   MyWorkRoute: MyWorkRoute,
-  ReportsRoute: ReportsRoute,
-  SecretarialRoute: SecretarialRoute,
-  TaxRoute: TaxRoute,
+  NotificationsRoute: NotificationsRoute,
+  ReportsRoute: ReportsRouteWithChildren,
+  SecretarialRoute: SecretarialRouteWithChildren,
+  TaxRoute: TaxRouteWithChildren,
   EntitiesIdRoute: EntitiesIdRoute,
   ObligationsIdRoute: ObligationsIdRoute,
-  QmsAuditsRoute: QmsAuditsRoute,
-  QmsCapaRoute: QmsCapaRoute,
-  QmsDocumentsRoute: QmsDocumentsRoute,
-  QmsManagementReviewsRoute: QmsManagementReviewsRoute,
-  QmsRisksRoute: QmsRisksRoute,
+  QmsAuditsRoute: QmsAuditsRouteWithChildren,
+  QmsCapaRoute: QmsCapaRouteWithChildren,
+  QmsDocumentsRoute: QmsDocumentsRouteWithChildren,
+  QmsManagementReviewsRoute: QmsManagementReviewsRouteWithChildren,
+  QmsRisksRoute: QmsRisksRouteWithChildren,
   RegulatoryAlertsRoute: RegulatoryAlertsRoute,
   EntitiesIndexRoute: EntitiesIndexRoute,
   ObligationsIndexRoute: ObligationsIndexRoute,
